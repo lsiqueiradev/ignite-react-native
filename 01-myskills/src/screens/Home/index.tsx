@@ -48,7 +48,6 @@ export function Home() {
       setMySkills(oldState => [...oldState, data]);
       setNewSkill('');
       setIsLoading(false);
-      console.log(data);
     }, 1000);
   }
 
