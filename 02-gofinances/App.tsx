@@ -1,5 +1,7 @@
-
+import 'react-native-gesture-handler';
 import { useCallback, useEffect, useState } from 'react';
+
+import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
 import { StatusBar } from 'expo-status-bar';
 import * as SplashScreen from 'expo-splash-screen';
@@ -14,8 +16,9 @@ import {
   Poppins_700Bold
 } from '@expo-google-fonts/poppins';
 
-import { Dashboard } from './src/screens/Dashboard';
-import { View } from 'react-native';
+import { NavigationContainer } from '@react-navigation/native';
+
+import { Routes } from './src/routes';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -50,16 +53,18 @@ export default function App() {
   }
 
   return (
-    <View
+    <GestureHandlerRootView
       onLayout={onLayoutRootView}
       style={{
         flex: 1
       }}
     >
       <ThemeProvider theme={theme}>
-        <StatusBar style="auto" />
-        <Dashboard />
+        <NavigationContainer>
+          <StatusBar style="light" />
+          <Routes />
+        </NavigationContainer>
       </ThemeProvider >
-    </View>
+    </GestureHandlerRootView>
   );
 }

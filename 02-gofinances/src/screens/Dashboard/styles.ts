@@ -1,9 +1,10 @@
+import { BorderlessButton } from './../../../node_modules/react-native-gesture-handler/src/components/GestureButtons';
 import styled from "styled-components/native";
 
 import { RFPercentage, RFValue } from "react-native-responsive-fontsize";
 import { getStatusBarHeight, getBottomSpace } from 'react-native-iphone-x-helper';
 import { Feather } from '@expo/vector-icons';
-import { FlatList, FlatListProps } from "react-native";
+import { FlatList, FlatListProps, Platform } from "react-native";
 
 import { DataListProps } from '.';
 
@@ -65,6 +66,8 @@ export const UserName = styled.Text`
   margin-left: -2px;
 `;
 
+export const LogoutButton = styled(BorderlessButton)``;
+
 export const Icon = styled(Feather)`
   color: ${({ theme }) => theme.colors.secondary};
   font-size: ${RFValue(24)}px;
@@ -74,12 +77,13 @@ export const HighlightCards = styled.ScrollView.attrs({
   horizontal: true,
   showsHorizontalScrollIndicator: false,
   contentContainerStyle: {
-    paddingHorizontal: 24,
-  }
+    padding: 24,
+  },
+  overScrollMode: 'never',
 })`
   width: 100%;
   position: absolute;
-  margin-top: ${RFPercentage(20)}px;
+  margin-top: ${RFPercentage(16)}px;
 `;
 
 export const HighlightCardGap = styled.View`
@@ -107,9 +111,10 @@ export const TransactionList = styled(
 ).attrs({
   showsVerticalScrollIndicator: false,
   contentContainerStyle: {
-    paddingBottom: getBottomSpace(),
+    paddingBottom: getBottomSpace() + Platform.OS === 'ios' ? 0 : 24,
     paddingHorizontal: 24,
-  }
+  },
+  overScrollMode: 'never',
 })``;
 
 export const TransactionListGap = styled.View`

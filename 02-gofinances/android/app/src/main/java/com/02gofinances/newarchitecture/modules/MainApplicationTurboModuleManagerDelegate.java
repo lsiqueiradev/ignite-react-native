@@ -1,4 +1,4 @@
-package com.02gofinances.newarchitecture.modules;
+package br.com.lsm.gofinances.newarchitecture.modules;
 
 import com.facebook.jni.HybridData;
 import com.facebook.react.ReactPackage;
