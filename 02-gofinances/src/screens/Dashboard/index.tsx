@@ -70,7 +70,7 @@ export function Dashboard() {
         <Highlight
           type="up"
           title="Entrada"
-          amount="R$ 17.400,00"
+          amount="R$ 638,90"
           lastTransaction="Última entrada dia 3 de julho"
         />
         <S.HighlightCardGap />

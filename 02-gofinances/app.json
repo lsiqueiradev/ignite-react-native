@@ -1,8 +1,9 @@
 {
   "expo": {
-    "name": "02-gofinances",
-    "slug": "02-gofinances",
+    "name": "Go Finances",
+    "slug": "go-finances",
     "version": "1.0.0",
+    "sdkVersion": "45.0.0",
     "assetBundlePatterns": [
       "**/*"
     ]

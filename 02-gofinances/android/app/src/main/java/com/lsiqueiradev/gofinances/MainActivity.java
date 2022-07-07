@@ -32,7 +32,7 @@ public class MainActivity extends ReactActivity {
   @Override
   protected ReactActivityDelegate createReactActivityDelegate() {
     return new ReactActivityDelegateWrapper(this,
-      new ReactActivityDelegate(this, getMainComponentName()){
+      new ReactActivityDelegate(this, getMainComponentName()) {
           protected ReactRootView createRootView() {
           return new RNGestureHandlerEnabledRootView(MainActivity.this);
         }

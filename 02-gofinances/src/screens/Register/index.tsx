@@ -20,6 +20,7 @@ import { CategorySelect } from '../CategorySelect';
 import * as S from './styles';
 import { InputForm } from '../../components/Form/InputForm';
 import { TouchableWithoutFeedback } from 'react-native-gesture-handler';
+import { showMessage } from 'react-native-flash-message';
 
 export interface FormDataProps {
   name: string;
@@ -96,7 +97,23 @@ export function Register() {
       category: category.name,
     }
 
-    console.log(data);
+    try {
+      const dataKey = '@gofinances:transactions';
+
+      showMessage({
+        message: 'Erro',
+        description: 'Não foi possível salvar',
+        type: 'danger',
+      });
+
+    } catch (err) {
+      console.log(data);
+      showMessage({
+        message: 'Erro',
+        description: 'Não foi possível salvar',
+        type: 'danger',
+      });
+    }
   }
 
   return (

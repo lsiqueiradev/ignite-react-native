@@ -3,7 +3,8 @@ import { useCallback, useEffect, useState } from 'react';
 
 import { GestureHandlerRootView } from 'react-native-gesture-handler';
 
-import { StatusBar } from 'expo-status-bar';
+import { StatusBar, setStatusBarBackgroundColor } from 'expo-status-bar';
+import * as NavigationBar from 'expo-navigation-bar';
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 
@@ -19,6 +20,7 @@ import {
 import { NavigationContainer } from '@react-navigation/native';
 
 import { Routes } from './src/routes';
+import FlashMessage from 'react-native-flash-message';
 
 export default function App() {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -44,6 +46,9 @@ export default function App() {
 
   const onLayoutRootView = useCallback(async () => {
     if (appIsReady) {
+      setStatusBarBackgroundColor('#5636D3', false);
+      NavigationBar.setBackgroundColorAsync('#FFFFFF');
+      NavigationBar.setButtonStyleAsync('dark');
       await SplashScreen.hideAsync();
     }
   }, [appIsReady]);
@@ -61,10 +66,11 @@ export default function App() {
     >
       <ThemeProvider theme={theme}>
         <NavigationContainer>
-          <StatusBar style="light" />
+          <StatusBar style="light" backgroundColor="#121015" />
           <Routes />
         </NavigationContainer>
       </ThemeProvider >
+      <FlashMessage position="top" />
     </GestureHandlerRootView>
   );
 }
